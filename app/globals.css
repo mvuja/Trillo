@@ -4,12 +4,12 @@
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: blue orange;
 }
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
+  height: 10px;
   border-radius:5px;
 }
 
@@ -18,7 +18,7 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-blue-500 to-red-400 rounded;
+  @apply bg-slate-700 rounded;
 }
 
 .btn{
@@ -30,11 +30,19 @@
 }
 
 .card.dragging{
-  @apply bg-slate-300
+  @apply bg-gray-200
 }
 
 .card-title{
   @apply my-3 text-base leading-5
+}
+
+.card-trash{
+  @apply absolute bottom-2 right-2
+}
+
+.card-trash svg{
+  @apply w-5 text-red-700
 }
 
 .card-label{

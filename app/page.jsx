@@ -42,7 +42,6 @@ export default function Home() {
       // console.log(boardData)
   })
 
-
   
   const onDragEnd = (re) => {
     if (!re.destination) return
@@ -58,7 +57,11 @@ export default function Home() {
       0,
       dragItem
     )
-    setBoardData(newBoardData)
+    // setBoardData(newBoardData)
+    if(typeof window !== 'undefined'){
+      const temp = JSON.stringify(newBoardData)
+      localStorage.setItem('data', temp)
+    }
   }
 
   const onAddCard = (e) => {
@@ -86,6 +89,11 @@ export default function Home() {
       }
     // }
   }
+
+
+  const setDataHandler = (data) => {
+    setBoardData(data)
+  }
   
   return (
     <main>
@@ -97,7 +105,7 @@ export default function Home() {
           {/* Board columns */}
           {ready && (
             <DragDropContext onDragEnd={onDragEnd}>
-              <div className="overflow-x-auto overflow-y-hidden inset-0 absolute whitespace-nowrap select-none">
+              <div className="overflow-x-auto overflow-y-auto inset-0 absolute whitespace-nowrap select-none">
                 {boardData.map((board, bIndex) => {
                   return (
                     <div key={board.id} className="w-96 whitespace-nowrap align-top h-full inline-block mx-2 first:ml-10 last:mr-10">
@@ -123,8 +131,10 @@ export default function Home() {
                                   board.items.map((item, iIndex) => {
                                     return (
                                       <CardItem
+                                        boardData={boardData}
+                                        setDataHandler={setDataHandler}
                                         key={item.id}
-                                        data={item}
+                                        item={item}
                                         index={iIndex}
                                         className="m-3"
                                       />
