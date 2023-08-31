@@ -30,11 +30,15 @@
 }
 
 .card{
-  @apply bg-white rounded-md p-3 m-3 mt-0 last:mb-0 shadow relative dark:bg-slate-700 transition-colors
+  background: none!important;
+  @apply px-3 py-2 last:pb-1
+}
+.card-inner{
+  @apply bg-white rounded-md p-3 shadow relative dark:bg-slate-700 transition-colors
 }
 
-.card.dragging{
-  @apply bg-gray-200 dark:bg-slate-600
+.card.dragging .card-inner{
+  @apply bg-gray-100 dark:bg-slate-600
 }
 
 .card-title{
@@ -89,20 +93,17 @@
   @apply bg-gray-200 transition rounded-md shadow-md flex flex-col relative overflow-hidden whitespace-normal dark:bg-slate-900
 }
 
-.column.dragging-over{
-  @apply bg-gray-300 dark:bg-slate-800
-}
-
 .column-top-bar{
-  @apply w-full h-1 transition bg-slate-700 absolute inset-x-0 top-0 dark:bg-slate-200
+  @apply w-full h-1 transition bg-slate-700 absolute inset-x-0 top-0 dark:bg-slate-600
 }
 
 .column-title{
-  @apply text-lg transition text-gray-600 font-semibold dark:text-gray-100
+  @apply p-3 flex justify-between items-center text-lg transition text-gray-600 font-semibold dark:text-gray-100
 }
 
 .add-task{
-  @apply flex justify-center items-center my-3 space-x-2 text-lg transition text-gray-800 dark:text-gray-100
+  width: 94%;
+  @apply flex justify-center items-center m-3 rounded-md py-1 px-3 space-x-2 text-lg transition text-gray-800 dark:text-gray-100 dark:bg-slate-950 bg-gray-50 hover:bg-gray-100
 }
 
 

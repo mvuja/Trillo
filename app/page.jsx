@@ -108,69 +108,63 @@ export default function Home() {
                 {boardData.map((board, bIndex) => {
                   return (
                     <div key={board.id} className="w-96 whitespace-nowrap align-top h-full inline-block mx-2 first:ml-10 last:mr-10">
-                      <Droppable droppableId={bIndex.toString()}>
-                        {(provided, snapshot) => (
-                          <div
-                            {...provided.droppableProps}
-                            ref={provided.innerRef}
-                          >
+                      <div className="column">
+                        <span className="column-top-bar"></span>
+                        <h4 className="column-title">
+                          <span>
+                            {board.name}
+                          </span>
+                        </h4>
+                        <Droppable droppableId={bIndex.toString()}>
+                          {(provided, snapshot) => (
                             <div
-                              className={`column ${snapshot.isDraggingOver && "dragging-over"}`}
+                              {...provided.droppableProps}
+                              ref={provided.innerRef}
                             >
-                              <span className="column-top-bar"></span>
-                              <h4 className=" p-3 flex justify-between items-center mb-2">
-                                <span className="column-title">
-                                  {board.name}
-                                </span>
-                              </h4>
-
-                              <div className="overflow-y-auto overflow-x-hidden h-auto pb-1"
-                              style={{maxHeight:'calc(100vh - 290px)'}}>
-                                {board.items.length > 0 &&
-                                  board.items.map((item, iIndex) => {
-                                    return (
-                                      <CardItem
-                                        boardData={boardData}
-                                        onDeleteCard={onDeleteCard}
-                                        key={item.id}
-                                        item={item}
-                                        index={iIndex}
-                                        className="m-3"
+                              <div className={` ${snapshot.isDraggingOver && "dragging-over"}`}>
+                                <div className="overflow-y-auto overflow-x-hidden h-auto"
+                                style={{maxHeight:'calc(100vh - 290px)'}}>
+                                  {board.items.length > 0 &&
+                                    board.items.map((item, iIndex) => {
+                                      return (
+                                        <CardItem
+                                          boardData={boardData}
+                                          onDeleteCard={onDeleteCard}
+                                          key={item.id}
+                                          item={item}
+                                          index={iIndex}
+                                          className="m-3"
+                                        />
+                                      );
+                                    })}
+                                  {provided.placeholder}
+                                </div>
+                                {
+                                  showForm && selectedBoard === bIndex ? (
+                                    <div className="p-3">
+                                      <textarea
+                                        className="textarea" 
+                                        rows={3}
+                                        placeholder="Task info"
+                                        value={text}
+                                        onChange={(e) => setText(e.target.value)}
                                       />
-                                    );
-                                  })}
-                                {provided.placeholder}
+                                      <button className="btn" data-id={bIndex} onClick={(e) => onAddCard(e)}>Add</button>
+                                    </div>
+                                  ): (
+                                    <button className="add-task" onClick={() => {setSelectedBoard(bIndex); setShowForm(true);}}>
+                                      <span>Add task</span>
+                                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                      </svg>
+                                    </button>
+                                  )
+                                }
                               </div>
-                              
-                              {
-                                showForm && selectedBoard === bIndex ? (
-                                  <div className="p-3">
-                                    <textarea
-                                      className="textarea" 
-                                      rows={3}
-                                      placeholder="Task info"
-                                      value={text}
-                                      onChange={(e) => setText(e.target.value)}
-                                    />
-                                    <button className="btn" data-id={bIndex} onClick={(e) => onAddCard(e)}>Add</button>
-                                  </div>
-                                ): (
-                                  <button
-                                    className="add-task"
-                                    onClick={() => {setSelectedBoard(bIndex); setShowForm(true);}}
-                                  >
-                                    <span>Add task</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-
-                                  </button>
-                                )
-                              }
                             </div>
-                          </div>
-                        )}
-                      </Droppable>
+                          )}
+                        </Droppable>
+                      </div>
                     </div>
                   )
                 })}
