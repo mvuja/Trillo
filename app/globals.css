@@ -21,28 +21,32 @@
   @apply bg-slate-700 rounded;
 }
 
+.layout{
+  @apply min-w-full bg-gradient-to-r from-g1-1 to-g1-2 dark:from-g2-1 dark:to-g2-2
+}
+
 .btn{
-  @apply bg-slate-700 hover:bg-slate-900 active:bg-slate-700 transition px-6 py-2 rounded-md text-white
+  @apply bg-slate-700 hover:bg-slate-900 active:bg-slate-700 transition px-6 py-2 rounded-md text-white dark:bg-slate-600 dark:active:bg-slate-600 dark:hover:bg-slate-700
 }
 
 .card{
-  @apply bg-white rounded-md p-3 m-3 mt-0 last:mb-0 shadow relative
+  @apply bg-white rounded-md p-3 m-3 mt-0 last:mb-0 shadow relative dark:bg-slate-700 transition
 }
 
 .card.dragging{
-  @apply bg-gray-200
+  @apply bg-gray-200 dark:bg-slate-600
 }
 
 .card-title{
-  @apply my-3 text-base leading-5
+  @apply my-3 text-base leading-5 transition dark:text-gray-200
 }
 
 .card-trash{
-  @apply absolute bottom-2 right-2
+  @apply absolute bottom-2 right-2 
 }
 
 .card-trash svg{
-  @apply w-5 text-red-700
+  @apply w-5 text-red-700 dark:text-red-500 transition
 }
 
 .card-label{
@@ -58,7 +62,7 @@
   @apply from-red-600 to-red-400
 }
 .prority-dropdown{
-  @apply inline-flex gap-3 bg-gray-200 p-3 rounded absolute shadow-xl top-12 left-3 invisible
+  @apply inline-flex gap-3 bg-gray-200 transition p-3 rounded absolute shadow-xl top-12 left-3 invisible dark:bg-slate-900
 }
 .prority-dropdown.p-visible{
   @apply visible
@@ -69,28 +73,36 @@
 
 
 .header{
-  @apply flex flex-initial justify-between px-10 py-7 shadow-sm bg-black/20 backdrop-blur-md
+  @apply flex flex-initial items-center gap-5 px-10 py-4 shadow-sm bg-black/20 backdrop-blur-md
 }
 
 .header-title{
   @apply text-3xl font-semibold text-white
 }
 
+.header .dark-toggle svg{
+  @apply scale-125 text-slate-600 dark:text-slate-200
+}
+
 
 .column{
-  @apply bg-gray-200 transition rounded-md shadow-md flex flex-col relative overflow-hidden whitespace-normal
+  @apply bg-gray-200 transition rounded-md shadow-md flex flex-col relative overflow-hidden whitespace-normal dark:bg-slate-900
 }
 
 .column.dragging-over{
-  @apply bg-gray-300
+  @apply bg-gray-300 dark:bg-slate-800
 }
 
 .column-top-bar{
-  @apply w-full h-1 bg-slate-700 absolute inset-x-0 top-0
+  @apply w-full h-1 transition bg-slate-700 absolute inset-x-0 top-0 dark:bg-slate-200
 }
 
 .column-title{
-  @apply text-lg text-gray-600 font-semibold
+  @apply text-lg transition text-gray-600 font-semibold dark:text-gray-100
+}
+
+.add-task{
+  @apply flex justify-center items-center my-3 space-x-2 text-lg transition text-gray-800 dark:text-gray-100
 }
 
 
@@ -99,5 +111,5 @@
 }
 
 .textarea{
-  @apply form-textarea w-full resize-none bg-white border-gray-300 rounded-md 
+  @apply form-textarea w-full resize-none transition bg-white border-gray-300 rounded-md dark:bg-slate-700 dark:border-gray-950 dark:text-gray-200
 }

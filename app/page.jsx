@@ -43,7 +43,7 @@ export default function Home() {
   })
 
   
-  const onDragEnd = (re) => {
+  const onDragEnd = re => {
     if (!re.destination) return
     let newBoardData = boardData
     var dragItem =
@@ -64,7 +64,7 @@ export default function Home() {
     }
   }
 
-  const onAddCard = (e) => {
+  const onAddCard = e => {
     // if(e.keyCode === 13) //Enter
     // {
       const val = text
@@ -90,15 +90,21 @@ export default function Home() {
     // }
   }
 
-
-  const setDataHandler = (data) => {
-    setBoardData(data)
+  const onDeleteCard = id => {
+    const test = boardData.map(el => {
+      const newFilter = el.items.filter(el2 => {
+        return el2.id !== id
+      })
+      el.items = newFilter
+      return el
+    })
+    setBoardData(test)
   }
+
   
   return (
     <main>
       <div className="flex flex-col h-screen">
-          {/* Board header */}
           <Header setBoardData={setBoardData} />
 
         <div className="relative h-full mt-11">
@@ -132,7 +138,7 @@ export default function Home() {
                                     return (
                                       <CardItem
                                         boardData={boardData}
-                                        setDataHandler={setDataHandler}
+                                        onDeleteCard={onDeleteCard}
                                         key={item.id}
                                         item={item}
                                         index={iIndex}
@@ -157,7 +163,7 @@ export default function Home() {
                                   </div>
                                 ): (
                                   <button
-                                    className="flex justify-center items-center my-3 space-x-2 text-lg"
+                                    className="add-task"
                                     onClick={() => {setSelectedBoard(bIndex); setShowForm(true);}}
                                   >
                                     <span>Add task</span>
