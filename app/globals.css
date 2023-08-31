@@ -30,7 +30,7 @@
 }
 
 .card{
-  @apply bg-white rounded-md p-3 m-3 mt-0 last:mb-0 shadow relative dark:bg-slate-700 transition
+  @apply bg-white rounded-md p-3 m-3 mt-0 last:mb-0 shadow relative dark:bg-slate-700 transition-colors
 }
 
 .card.dragging{

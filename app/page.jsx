@@ -46,17 +46,10 @@ export default function Home() {
   const onDragEnd = re => {
     if (!re.destination) return
     let newBoardData = boardData
-    var dragItem =
+    const dragItem =
       newBoardData[parseInt(re.source.droppableId)].items[re.source.index]
-    newBoardData[parseInt(re.source.droppableId)].items.splice(
-      re.source.index,
-      1
-    )
-    newBoardData[parseInt(re.destination.droppableId)].items.splice(
-      re.destination.index,
-      0,
-      dragItem
-    )
+      newBoardData[parseInt(re.source.droppableId)].items.splice(re.source.index, 1)
+      newBoardData[parseInt(re.destination.droppableId)].items.splice(re.destination.index, 0, dragItem)
     // setBoardData(newBoardData)
     if(typeof window !== 'undefined'){
       const temp = JSON.stringify(newBoardData)
