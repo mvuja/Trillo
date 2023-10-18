@@ -85,7 +85,7 @@
 }
 
 .header .dark-toggle svg{
-  @apply scale-125 text-slate-600 dark:text-slate-200
+  @apply scale-125 text-slate-600 dark:text-slate-200 transition
 }
 
 
@@ -98,7 +98,7 @@
 }
 
 .column-title{
-  @apply p-3 flex justify-between items-center text-lg transition text-gray-600 font-semibold dark:text-gray-100
+  @apply p-3 flex justify-between items-center text-lg transition text-gray-600 font-semibold dark:text-gray-100 cursor-pointer
 }
 
 .add-task{
@@ -113,4 +113,16 @@
 
 .textarea{
   @apply form-textarea w-full resize-none transition bg-white border-gray-300 rounded-md dark:bg-slate-700 dark:border-gray-950 dark:text-gray-200
+}
+
+.editing-board-name{
+  @apply w-full form-input bg-white border-gray-300 rounded-md
+}
+
+.board-edit-container{
+  @apply flex justify-between w-full gap-3
+}
+
+.board-edit-container svg{
+  @apply scale-150 text-slate-600 dark:text-slate-200 transition
 }

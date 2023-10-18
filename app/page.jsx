@@ -1,7 +1,7 @@
 'use client'
 import BoardData from "./data/board-data.json"
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 // components
 import Header from "./components/Header"
@@ -16,6 +16,11 @@ export default function Home() {
   const [boardData, setBoardData] = useState(getInitialData())
   const [showForm, setShowForm] = useState(false)
   const [selectedBoard, setSelectedBoard] = useState(0)
+
+  // EDITING BOARD NAME
+  const [editingBoardName, setEditingBoardName] = useState(false)
+  const [editingBoardInput, setEditingBoardInput] = useState('')
+  const [selectedBoardForEditing, setSelectedBoardForEditing] = useState(0)
 
 
   useEffect(() => {
@@ -94,6 +99,36 @@ export default function Home() {
     setBoardData(test)
   }
 
+
+  const changeColumnName = (boardId, boardName) => {
+    setEditingBoardName(true)
+    setSelectedBoardForEditing(boardId)
+    setEditingBoardInput(boardName)
+  }
+
+  const editingBoardInputChange = (e, boardId, boardName) => {
+    setEditingBoardInput(e.target.value)
+    console.log(boardData)
+    const newBoard = boardData.map(el => {
+      if(el.id === boardId){
+        el.name = e.target.value
+        console.log(el.name);
+      }
+      return el
+    })
+    setBoardData(newBoard)
+  }
+
+  const closeBoardEditing = () => {
+    setEditingBoardName(false)
+  }
+
+  const handleKeyPress = e => {
+    if(e.key === 'Enter' || e.key === "Escape"){
+      setEditingBoardName(false)
+    }
+  }
+
   
   return (
     <main>
@@ -110,10 +145,22 @@ export default function Home() {
                     <div key={board.id} className="w-96 whitespace-nowrap align-top h-full inline-block mx-2 first:ml-10 last:mr-10">
                       <div className="column">
                         <span className="column-top-bar"></span>
-                        <h4 className="column-title">
-                          <span>
-                            {board.name}
-                          </span>
+                        <h4 className="column-title" onDoubleClick={() => changeColumnName(board.id, board.name)}>
+                          {editingBoardName && selectedBoardForEditing === board.id
+                            ?
+                            <div className="board-edit-container">
+                              <input type="text" className="editing-board-name" value={editingBoardInput} onChange={(e) => editingBoardInputChange(e, board.id, board.name)} onKeyDown={handleKeyPress} />
+                              <button onClick={closeBoardEditing}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                              </button>
+                            </div>
+                            :
+                            <span>
+                              {board.name}
+                            </span>
+                          }
                         </h4>
                         <Droppable droppableId={bIndex.toString()}>
                           {(provided, snapshot) => (
