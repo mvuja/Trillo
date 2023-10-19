@@ -85,7 +85,11 @@
 
 
 .header{
-  @apply flex flex-initial items-center gap-5 px-10 py-4 shadow-sm bg-black/20 backdrop-blur-md
+  @apply flex flex-initial items-center gap-5 px-4 md:px-10 py-4 shadow-sm bg-black/20 backdrop-blur-md flex-col md:flex-row justify-center
+}
+
+.header-title-container{
+  @apply flex items-center mr-0 md:mr-auto justify-between w-full md:w-auto
 }
 
 .header-title{
@@ -94,6 +98,26 @@
 
 .header .dark-toggle svg{
   @apply scale-125 text-slate-600 dark:text-slate-200 transition
+}
+
+.toggle-mobile{
+  @apply md:hidden
+}
+
+.toggle-desktop{
+  @apply hidden md:block
+}
+
+.add-new-container{
+  @apply w-full md:w-auto
+}
+
+.add-new-container-form{
+  @apply flex flex-col sm:flex-row gap-2 md:gap-3
+}
+
+.add-new-container .input{
+  @apply flex-1
 }
 
 

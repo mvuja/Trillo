@@ -18,7 +18,7 @@ const EditCardModal = ({ setShowEditModal, showEditModal, editInput, setEditInpu
                         </svg>
                     </button>
                     <textarea cols="30" rows="4" className='input' value={editInput} onChange={(e) => setEditInput(e.target.value)}></textarea>
-                    <button className="btn">Edit card</button>
+                    <button className="btn">Edit task</button>
                 </form>
             </div>
         }

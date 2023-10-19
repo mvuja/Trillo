@@ -33,7 +33,7 @@ export default function Home() {
 
 
   // TOAST NOTIFICATION
-  const notify = (txt) => toast(txt, {
+  const notify = txt => toast(txt, {
       position: "bottom-right",
       autoClose: 4000,
       hideProgressBar: false,
@@ -218,7 +218,7 @@ export default function Home() {
               <div className="overflow-x-auto overflow-y-auto inset-0 absolute whitespace-nowrap select-none">
                 {boardData.map((board, bIndex) => {
                   return (
-                    <div key={board.id} className="w-96 whitespace-nowrap align-top h-full inline-block mx-2 first:ml-10 last:mr-10">
+                    <div key={board.id} className="w-96 whitespace-nowrap align-top h-full inline-block mx-2 first:ml-4 md:first:ml-10 last:mr-4 md:last:mr-10">
                       <div className="column">
                         <span className="column-top-bar"></span>
                         <h4 className="column-title" onDoubleClick={() => changeColumnName(board.id, board.name)}>
