@@ -49,6 +49,14 @@
   @apply absolute bottom-2 right-2 
 }
 
+.card-edit{
+  @apply absolute top-2 right-2 
+}
+
+.card-edit svg{
+  @apply w-5 text-gray-700 dark:text-gray-200 transition
+}
+
 .card-trash svg{
   @apply w-5 text-red-700 dark:text-red-500 transition
 }
@@ -108,7 +116,7 @@
 
 
 .input{
-  @apply form-input bg-gray-100 border-gray-300 rounded-md
+  @apply form-input bg-gray-100 border-gray-300 rounded-md 
 }
 
 .textarea{
@@ -116,7 +124,7 @@
 }
 
 .editing-board-name{
-  @apply w-full form-input bg-white border-gray-300 rounded-md
+  @apply w-full form-input bg-white border-gray-300 rounded-md text-gray-600
 }
 
 .board-edit-container{

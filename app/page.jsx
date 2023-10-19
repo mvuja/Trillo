@@ -23,6 +23,9 @@ export default function Home() {
   const [selectedBoardForEditing, setSelectedBoardForEditing] = useState(0)
 
 
+
+  // INITIAL LOAD
+
   useEffect(() => {
     if (process.browser) {
       setReady(true)
@@ -31,6 +34,7 @@ export default function Home() {
 
   
   // LOCAL STORAGE
+
   function getInitialData() {
     if(typeof window !== 'undefined'){
       const temp = localStorage.getItem('data')
@@ -43,8 +47,6 @@ export default function Home() {
         const temp = JSON.stringify(boardData)
         localStorage.setItem('data', temp)
       }
-
-      // console.log(boardData)
   })
 
   
@@ -61,6 +63,9 @@ export default function Home() {
       localStorage.setItem('data', temp)
     }
   }
+
+
+  // ADD CARD
 
   const onAddCard = e => {
     // if(e.keyCode === 13) //Enter
@@ -88,6 +93,9 @@ export default function Home() {
     // }
   }
 
+
+  // DELETE CARD
+
   const onDeleteCard = id => {
     const test = boardData.map(el => {
       const newFilter = el.items.filter(el2 => {
@@ -100,19 +108,35 @@ export default function Home() {
   }
 
 
+
+  // EDIT CARD
+
+  const onEditCard = id => {
+    const test = boardData.map(el => {
+      const newFilter = el.items.filter(el2 => {
+        return el2.id !== id
+      })
+      el.items = newFilter
+      return el
+    })
+    setBoardData(test)
+  }
+
+
+
+  // EDIT BOARD NAME
+
   const changeColumnName = (boardId, boardName) => {
     setEditingBoardName(true)
     setSelectedBoardForEditing(boardId)
     setEditingBoardInput(boardName)
   }
 
-  const editingBoardInputChange = (e, boardId, boardName) => {
+  const editingBoardInputChange = (e, boardId) => {
     setEditingBoardInput(e.target.value)
-    console.log(boardData)
     const newBoard = boardData.map(el => {
       if(el.id === boardId){
         el.name = e.target.value
-        console.log(el.name);
       }
       return el
     })
@@ -136,6 +160,17 @@ export default function Home() {
           <Header setBoardData={setBoardData} />
 
         <div className="relative h-full mt-11">
+
+          {/* EDIT CARD */}
+
+          <div className="edit-card-container">
+            <form>
+              <input type="text" />
+              <button>Edit card</button>
+            </form>
+          </div>
+
+
           {/* Board columns */}
           {ready && (
             <DragDropContext onDragEnd={onDragEnd}>
@@ -149,7 +184,7 @@ export default function Home() {
                           {editingBoardName && selectedBoardForEditing === board.id
                             ?
                             <div className="board-edit-container">
-                              <input type="text" className="editing-board-name" value={editingBoardInput} onChange={(e) => editingBoardInputChange(e, board.id, board.name)} onKeyDown={handleKeyPress} />
+                              <input type="text" className="editing-board-name" value={editingBoardInput} onChange={(e) => editingBoardInputChange(e, board.id)} onKeyDown={handleKeyPress} />
                               <button onClick={closeBoardEditing}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                                   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -177,6 +212,7 @@ export default function Home() {
                                         <CardItem
                                           boardData={boardData}
                                           onDeleteCard={onDeleteCard}
+                                          onEditCard={onEditCard}
                                           key={item.id}
                                           item={item}
                                           index={iIndex}
