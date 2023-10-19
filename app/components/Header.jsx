@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import createGuidId from '../hooks/GuiId'
 
 
-const Header = ({setBoardData}) => {
+const Header = ({ setBoardData, notify }) => {
 
     const [addNewInput, setAddNewInput] = useState('')
     const [dark, setDark] = useState(false)
@@ -26,6 +26,7 @@ const Header = ({setBoardData}) => {
             ]
           )
         })
+        notify('Column successfully created!')
       }
       setAddNewInput('')
     }

@@ -3,6 +3,9 @@ import BoardData from "./data/board-data.json"
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 import { useEffect, useRef, useState } from "react"
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // components
 import Header from "./components/Header"
 import CardItem from "./components/CardItem"
@@ -28,6 +31,18 @@ export default function Home() {
   const [editInput, setEditInput] = useState('')
   const [editID, setEditID] = useState()
 
+
+  // TOAST NOTIFICATION
+  const notify = (txt) => toast(txt, {
+      position: "bottom-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    })
 
 
   // INITIAL LOAD
@@ -95,6 +110,7 @@ export default function Home() {
         setBoardData(newBoardData)
         setShowForm(false)
         setText('')
+        notify('Task successfully created!')
       }
     // }
   }
@@ -111,6 +127,7 @@ export default function Home() {
       return el
     })
     setBoardData(test)
+    notify('Task successfully deleted!')
   }
 
 
@@ -139,6 +156,7 @@ export default function Home() {
       })
       setBoardData(test)
       setShowEditModal(false)
+      notify('Task successfully edited!')
     }
 
   }
@@ -177,8 +195,9 @@ export default function Home() {
   
   return (
     <main>
+      <ToastContainer />
       <div className="flex flex-col h-screen">
-          <Header setBoardData={setBoardData} />
+          <Header setBoardData={setBoardData} notify={notify} />
 
         <div className="relative h-full mt-11">
 
@@ -208,7 +227,7 @@ export default function Home() {
                             <div className="board-edit-container">
                               <input type="text" className="editing-board-name" value={editingBoardInput} onChange={(e) => editingBoardInputChange(e, board.id)} onKeyDown={handleKeyPress} />
                               <button onClick={closeBoardEditing}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
                                   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                                 </svg>
                               </button>
@@ -254,7 +273,7 @@ export default function Home() {
                                         value={text}
                                         onChange={(e) => setText(e.target.value)}
                                       />
-                                      <button className="btn" data-id={bIndex} onClick={(e) => onAddCard(e)}>Add</button>
+                                      <button className="btn w-full" data-id={bIndex} onClick={(e) => onAddCard(e)}>Add task</button>
                                     </div>
                                   ): (
                                     <button className="add-task" onClick={() => {setSelectedBoard(bIndex); setShowForm(true);}}>
