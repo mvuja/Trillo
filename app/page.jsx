@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react"
 // components
 import Header from "./components/Header"
 import CardItem from "./components/CardItem"
+import EditCardModal from "./components/EditCardModal"
 
 // custom hooks
 import createGuidId from './hooks/GuiId'
@@ -21,6 +22,11 @@ export default function Home() {
   const [editingBoardName, setEditingBoardName] = useState(false)
   const [editingBoardInput, setEditingBoardInput] = useState('')
   const [selectedBoardForEditing, setSelectedBoardForEditing] = useState(0)
+
+  // EDITING CARD
+  const [showEditModal, setShowEditModal] = useState(false)
+  const [editInput, setEditInput] = useState('')
+  const [editID, setEditID] = useState()
 
 
 
@@ -109,17 +115,32 @@ export default function Home() {
 
 
 
-  // EDIT CARD
+  // EDIT CARD NAME
 
-  const onEditCard = id => {
-    const test = boardData.map(el => {
-      const newFilter = el.items.filter(el2 => {
-        return el2.id !== id
+  const onEditCard = (id, title) => {
+    setShowEditModal(true)
+    setEditInput(title)
+    setEditID(id)
+  }
+
+  const editCardHandler = e => {
+    e.preventDefault()
+    console.log(editInput);
+    if(editInput.trim() !== ''){
+      const test = boardData.map(el => {
+        const newFilter = el.items.map(el2 => {
+          if(el2.id === editID){
+            el2.title = editInput
+          }
+          return el2
+        })
+        el.items = newFilter
+        return el
       })
-      el.items = newFilter
-      return el
-    })
-    setBoardData(test)
+      setBoardData(test)
+      setShowEditModal(false)
+    }
+
   }
 
 
@@ -163,12 +184,13 @@ export default function Home() {
 
           {/* EDIT CARD */}
 
-          <div className="edit-card-container">
-            <form>
-              <input type="text" />
-              <button>Edit card</button>
-            </form>
-          </div>
+          <EditCardModal
+            setShowEditModal={setShowEditModal}
+            showEditModal={showEditModal}
+            editInput={editInput}
+            setEditInput={setEditInput}
+            editCardHandler={editCardHandler}
+          />
 
 
           {/* Board columns */}
