@@ -66,7 +66,7 @@
             {
                 "id":5,
                 "priority": 0,
-                "title": "Social media posts",
+                "title": "Social media posts.",
                 "chat": 0,
                 "attachment": 0,
                 "assignees": [
@@ -96,7 +96,7 @@
             {
                 "id":7,
                 "priority": 1,
-                "title": "Navigation designs",
+                "title": "Navigation designs.",
                 "chat": 0,
                 "attachment": 0,
                 "assignees": [
@@ -108,7 +108,7 @@
             {
                 "id":8,
                 "priority": 2,
-                "title": "Create style guide based on previous feedback",
+                "title": "Create style guide based on previous feedback.",
                 "chat": 5,
                 "attachment": 2,
                 "assignees": [

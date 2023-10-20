@@ -1,7 +1,7 @@
 'use client'
 import BoardData from "./data/board-data.json"
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

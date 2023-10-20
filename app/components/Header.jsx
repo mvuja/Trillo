@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // custom hooks
 import createGuidId from '../hooks/GuiId'

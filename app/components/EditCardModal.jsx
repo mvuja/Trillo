@@ -1,10 +1,4 @@
-import { useState, useEffect } from 'react';
-
-
 const EditCardModal = ({ setShowEditModal, showEditModal, editInput, setEditInput, editCardHandler }) => {
-
-    
-
     return (
         <>
         {
