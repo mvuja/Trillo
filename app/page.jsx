@@ -34,15 +34,15 @@ export default function Home() {
 
   // TOAST NOTIFICATION
   const notify = txt => toast(txt, {
-      position: "bottom-right",
-      autoClose: 4000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    })
+    position: "bottom-right",
+    autoClose: 4000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  })
 
 
   // INITIAL LOAD
@@ -64,10 +64,10 @@ export default function Home() {
     }
   }
   useEffect(() => {
-      if(typeof window !== 'undefined'){
-        const temp = JSON.stringify(boardData)
-        localStorage.setItem('data', temp)
-      }
+    if(typeof window !== 'undefined'){
+      const temp = JSON.stringify(boardData)
+      localStorage.setItem('data', temp)
+    }
   })
 
   

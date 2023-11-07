@@ -59,7 +59,7 @@ const Header = ({ setBoardData, notify }) => {
         </div>
         <div className="add-new-container">
           <form onSubmit={addColumn} className='add-new-container-form'>
-            <input type="text" onChange={changeAddNewInput} value={addNewInput} className='input' />
+            <input type="text" onChange={changeAddNewInput} value={addNewInput} className='input' required />
             <button className='btn'>Add list</button>
           </form>
         </div>
