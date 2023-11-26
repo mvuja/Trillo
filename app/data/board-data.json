@@ -5,8 +5,8 @@
         "items": [
             {
                 "id":1,
-                "priority": 0,
-                "title": "Company website redesign.",
+                "priority": 1,
+                "title": "Schedule a kick-off meeting with the client to discuss project goals and deliverables.",
                 "chat": 1,
                 "attachment": 2,
                 "assignees": [
@@ -17,8 +17,20 @@
             },
             {
                 "id":2,
-                "priority": 2,
-                "title": "Mobile app login process prototype.",
+                "priority": 0,
+                "title": "Set up the development environment with the required tools and frameworks.",
+                "chat": 10,
+                "attachment": 4,
+                "assignees": [
+                    {
+                        "avt": "https://randomuser.me/api/portraits/men/67.jpg"
+                    }
+                ]
+            },
+            {
+                "id":12,
+                "priority": 0,
+                "title": "Conduct a post-project review to identify lessons learned and areas for improvement.",
                 "chat": 10,
                 "attachment": 4,
                 "assignees": [
@@ -35,8 +47,44 @@
         "items": [
             {
                 "id":3,
-                "priority": 1,
+                "priority": 0,
+                "title": "Create a project brief document outlining client requirements and expectations.",
+                "chat": 0,
+                "attachment": 3,
+                "assignees": [
+                    {
+                        "avt": "https://randomuser.me/api/portraits/men/79.jpg"
+                    }
+                ]
+            },
+            {
+                "id":4,
+                "priority": 2,
                 "title": "Research and strategy for upcoming project.",
+                "chat": 0,
+                "attachment": 3,
+                "assignees": [
+                    {
+                        "avt": "https://randomuser.me/api/portraits/men/79.jpg"
+                    }
+                ]
+            },
+            {
+                "id":5,
+                "priority": 2,
+                "title": "Create UI/UX design mockups for key pages (e.g., landing page, product/service pages).",
+                "chat": 0,
+                "attachment": 3,
+                "assignees": [
+                    {
+                        "avt": "https://randomuser.me/api/portraits/men/79.jpg"
+                    }
+                ]
+            },
+            {
+                "id":6,
+                "priority": 1,
+                "title": "Implement necessary databases and server-side logic.",
                 "chat": 0,
                 "attachment": 3,
                 "assignees": [
@@ -52,7 +100,7 @@
         "name":"In Review",
         "items": [
             {
-                "id":4,
+                "id":7,
                 "priority": 2,
                 "title": "Dashboard layout redesign.",
                 "chat": 13,
@@ -64,9 +112,21 @@
                 ]
             },
             {
-                "id":5,
+                "id":8,
                 "priority": 0,
-                "title": "Social media posts.",
+                "title": "Conduct integration testing to ensure smooth communication between frontend and backend components.",
+                "chat": 0,
+                "attachment": 0,
+                "assignees": [
+                    {
+                        "avt": "https://randomuser.me/api/portraits/men/68.jpg"
+                    }
+                ]
+            },
+            {
+                "id":13,
+                "priority": 1,
+                "title": "Create a bug report for any issues discovered during QA.",
                 "chat": 0,
                 "attachment": 0,
                 "assignees": [
@@ -82,9 +142,9 @@
         "name":"Completed",
         "items": [
             {
-                "id":6,
+                "id":9,
                 "priority": 0,
-                "title": "Review client spec document and give feedback.",
+                "title": "Present the initial version of the website/app to the client for feedback.",
                 "chat": 13,
                 "attachment": 2,
                 "assignees": [
@@ -94,9 +154,9 @@
                 ]
             },
             {
-                "id":7,
+                "id":10,
                 "priority": 1,
-                "title": "Navigation designs.",
+                "title": "Perform thorough testing of the entire app for functionality and security.",
                 "chat": 0,
                 "attachment": 0,
                 "assignees": [
@@ -106,9 +166,33 @@
                 ]
             },
             {
-                "id":8,
+                "id":11,
                 "priority": 2,
                 "title": "Create style guide based on previous feedback.",
+                "chat": 5,
+                "attachment": 2,
+                "assignees": [
+                    {
+                        "avt": "https://randomuser.me/api/portraits/men/64.jpg"
+                    }
+                ]
+            },
+            {
+                "id":14,
+                "priority": 2,
+                "title": "Obtain final approval from the client.",
+                "chat": 5,
+                "attachment": 2,
+                "assignees": [
+                    {
+                        "avt": "https://randomuser.me/api/portraits/men/64.jpg"
+                    }
+                ]
+            },
+            {
+                "id":15,
+                "priority": 0,
+                "title": "Prepare the website/app for deployment to the live server.",
                 "chat": 5,
                 "attachment": 2,
                 "assignees": [
